@@ -256,6 +256,9 @@ class App:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     flag = True
                     break
+                if event.type == pygame.QUIT:
+                    self._isRunning = False
+                    return
             if flag :
                 break
             
@@ -277,7 +280,9 @@ class App:
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    pygame.time.delay(1000)
+                    pygame.time.delay(500)
+                    return
+                if event.type == pygame.QUIT:
                     return
 
     def show_start(self,control):
