@@ -203,6 +203,7 @@ class App:
     def on_event(self,event):
         if event.type == pygame.QUIT:
             self._isRunning = False
+            sys.exit(0)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.bird.up()
             self.sounds['wing'].play()
@@ -258,7 +259,7 @@ class App:
                     break
                 if event.type == pygame.QUIT:
                     self._isRunning = False
-                    return
+                    sys.exit(0)
             if flag :
                 break
             
@@ -283,7 +284,7 @@ class App:
                     pygame.time.delay(500)
                     return
                 if event.type == pygame.QUIT:
-                    return
+                    sys.exit(0)
 
     def show_start(self,control):
         self.screen.blit(self.backgroud.image,self.bird.rect,self.bird.rect)
@@ -302,6 +303,7 @@ if __name__ == "__main__":
     pygame.init()
     pygame.mixer.init()
 
-    app = App()
-    app.init()
-    app.run()
+    while True:
+        app = App()
+        app.init()
+        app.run()
